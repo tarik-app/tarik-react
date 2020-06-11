@@ -1,0 +1,10 @@
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-end; */
+}
+
+button {
+  border: none;
+  background-color: rgb(195, 190, 190);
+}
