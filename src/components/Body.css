@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  padding-top: 4rem;
+  justify-content: space-between;
+  background-color: rgb(195, 190, 190);
+  min-height: 85vh;
+}
+
+.container > div:first-child{
+  padding-left: 5rem;
+}
+
+
+/* learn history */
+h1 {
+  font-size: 70px;
+  line-height: 112px;
+  /* font-family: Habibi; */
+  font-family: 'Habibi', serif;
+  color: #974610;
+}
+
+/* get quizzed */
+h2 {
+  font-size: 40px;
+  line-height: 30px;
+  /* font-family: Habibi; */
+  font-family: 'Habibi', serif;
+  color: #974610;
+}
+
+img {
+  margin-right: 2rem;
+}
+
+.play {
+  font-family: 'Habibi', serif;
+  width: 108px;
+  height: 50px;
+  background-color: #974610;
+  color: white;
+}
+
+.learn {
+  font-family: 'Habibi', serif;
+  width: 108px;
+  height: 50px;
+  background-color: rgb(195, 190, 190);
+  color: rgb(121, 123, 129);
+  border: 2px solid #636877;
+  margin-left: 2rem;
+}
