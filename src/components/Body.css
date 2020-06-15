@@ -2,7 +2,7 @@
   display: flex;
   padding-top: 4rem;
   justify-content: space-between;
-  background-color: rgb(195, 190, 190);
+  background-color: rgb(206, 205, 205);
   min-height: 85vh;
 }
 
@@ -49,4 +49,10 @@ img {
   color: rgb(121, 123, 129);
   border: 2px solid #636877;
   margin-left: 2rem;
+  transition: 400ms;
+}
+
+.learn:hover {
+  background-color: #974610;
+  color: white;
 }

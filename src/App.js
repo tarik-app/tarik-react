@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
 import Body from './components/Body'
+import Game from './components/Game'
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <header className="App-header">
         <Navbar />
       </header>
-      <Body />
+      {/* <Body /> */}
+      <Game />
     </div>
   );
 }
