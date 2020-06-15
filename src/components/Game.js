@@ -8,7 +8,9 @@ class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {data: null,
-                  isLoading: false}
+                  isLoading: false,
+                ID: null,
+              colors: null}
 }
   
  async getPlace() {
@@ -19,7 +21,8 @@ class Game extends Component {
       // const json = await res.json()
       // const json = await res.data     
       // console.log(json)
-      this.setState({ data: res.Name})
+      this.setState({ name: res.data.Name, ID: res.data.ID, colors: res.data.Colors})
+      // console.log(this.state.data)
       
     } catch(err) {
         console.log('-- Error fetching --')
@@ -28,10 +31,16 @@ class Game extends Component {
       }
   }
 
+  // handle the game button
   handleSubmit(e) {
     this.setState({isLoading : true})
     e.preventDefault();
     this.getPlace()
+  }
+
+  // handles the display
+  displayName() {
+    return [this.state.ID, this.state.data, this.state.colors]
   }
 
   render() {
@@ -41,7 +50,7 @@ class Game extends Component {
       <form onSubmit={e => this.handleSubmit(e)}>
         <button className='submit-btn' type="submit">Generate Game</button>
       </form>
-      {this.state.data}
+      <p>{this.displayName()}</p>
     </div>
     )
   }
