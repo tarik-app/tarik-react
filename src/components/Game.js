@@ -8,17 +8,35 @@ import axios from "axios";
 class Game extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: null,
-                  isLoading: false,
-                ID: null,
-              colors: null,
-              latitude: 0,
-              longitude: 0,
-            }
+    this.state = {
+      data: null,
+      isLoading: false,
+      latitude: 0,
+      longitude: 0,
+    }
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    this.socket = new WebSocket("ws://localhost:8080/ws", 'echo-protocol')
+    this.socket = new WebSocket("ws://localhost:8080/ws")
     console.log(this.socket)
-}
+    
+    this.socket.onopen = () => {
+      console.log("Succesfully Connected")
+      this.socket.send("Hi from the Client!")
+    }
+
+    this.socket.onclose = (event) => {
+      console.log("Socket connection closed: ", event)
+    }
+
+    this.socket.onmessage = (msg) => {
+      console.log("onmessage:")
+      console.log(msg)
+    }
+    
+    this.socket.onerror = (error) => {
+      console.log("Socket Error: ", error)
+    }
+
+  }
 
 getLocation() {
   if (navigator.geolocation) {
@@ -29,20 +47,41 @@ getLocation() {
 }
 
 
+  // a way is to check if the socket is open or not before sending.
+  isOpen(ws) {
+    return ws.readyState === ws.OPEN
+  }
+
+
 showPosition = (position) => {
   console.log(position.coords.latitude)
   console.log(position.coords.longitude)
-  console.log(this)
   this.setState({ latitude: position.coords.latitude, longitude: position.coords.longitude})
   // return "Latitude: " + position.coords.latitude + 
   // "<br>Longitude: " + position.coords.longitude;
 
+  if (!this.isOpen(this.socket)) {
+    console.log('socket not open')
+    return; //check if socket is open before sending
+  }
+  // console.log('socket open')
   this.socket.send("hi everyone this is Redi sending lati and long from client to server:)")
+  console.log('socket open')
   this.socket.send(JSON.stringify({
     latit: position.coords.latitude,
     longi: position.coords.longitude
     }))    
 }
+
+
+
+
+
+
+
+
+
+
 
  async getPlace() {
   // window.WebSocket = window.WebSocket || window.MozWebSocket;
@@ -82,8 +121,8 @@ showPosition = (position) => {
       <form onSubmit={e => this.handleSubmit(e)}>
         <button className='submit-btn' type="submit">Generate Game</button>
       </form>
-      <p>{this.displayName()}</p>
-      <button onclick={this.getLocation()}>Try It</button>
+      {/* <p>{this.displayName()}</p> */}
+      <button onClick={() => this.getLocation()}>Try It</button>
       <p>Latitude: {this.state.latitude}</p>
       <p>Longitude: {this.state.longitude}</p>
     </div>
