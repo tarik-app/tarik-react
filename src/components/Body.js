@@ -1,20 +1,25 @@
 import React from 'react'
 import './Body.css'
-// import image from '../assets/images'
+
 function Body() {
   return(
-    <div className='container'>
-      <div>
-        <h1>LEARN HISTORY</h1>
-        <h2>Get quizzed about sites</h2>
-        <button className='play'>Play Now</button>
-        <button className='learn'>Learn More</button>
-      </div>
-      <div>
-        <img src={require('../assets/images/site1.jpg')} alt='historical sites' width='318' height='421'/>
-      </div>
-    </div>
-    
+    <main>
+      <section className='presentation'>
+        <div className='introduction'>
+          <div className='intro-text'>
+            <h1>LEARN HISTORY</h1>
+            <p>Get quizzed about sites</p>
+          </div>
+          <div className='cta'>
+            <button className='cta-select'>Play Now</button>
+            <button className='learn'>Learn More</button>
+          </div>
+        </div>
+        <div className='cover'>
+          <img className='sites' src={require('../assets/images/site1.jpg')} alt='historical sites'/>
+        </div>
+      </section>
+    </main>
   )
 }
 

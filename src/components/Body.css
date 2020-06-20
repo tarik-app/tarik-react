@@ -1,58 +1,86 @@
-.container {
+.presentation {
   display: flex;
-  padding-top: 4rem;
-  justify-content: space-between;
-  background-color: rgb(206, 205, 205);
-  min-height: 85vh;
+  width: 90%;
+  margin: auto;
+  min-height: 80vh;
+  align-items: center;
 }
 
-.container > div:first-child{
-  padding-left: 5rem;
+button {
+  font-family: 'Habibi', serif;
 }
 
+.cover img {
+  height: 60vh;
+  filter: drop-shadow(0px 5px 3px black);
+  animation: drop 1.5s ease;
+  height: 100%;
+}
 
-/* learn history */
-h1 {
-  font-size: 70px;
-  line-height: 112px;
-  /* font-family: Habibi; */
+.introduction {
+  flex: 1;
+}
+
+.intro-text h1 {
+  font-size: 44px;
+  font-weight: 500;
   font-family: 'Habibi', serif;
   color: #974610;
 }
 
-/* get quizzed */
-h2 {
-  font-size: 40px;
-  line-height: 30px;
-  /* font-family: Habibi; */
+.intro-text p {
+  margin-top: 5px;
+  font-size: 22px;
   font-family: 'Habibi', serif;
   color: #974610;
 }
 
-img {
-  margin-right: 2rem;
+.cover {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 60vh;
 }
 
-.play {
-  font-family: 'Habibi', serif;
-  width: 108px;
+.cta {
+  padding: 50px 0px 0px 0px;
+}
+
+.cta-select {
+  width: 150px;
   height: 50px;
+  cursor: pointer;
   background-color: #974610;
   color: white;
+  font-size: 16px;
 }
 
 .learn {
-  font-family: 'Habibi', serif;
-  width: 108px;
+  width: 150px;
   height: 50px;
+  cursor: pointer;
   background-color: rgb(195, 190, 190);
   color: rgb(121, 123, 129);
   border: 2px solid #636877;
   margin-left: 2rem;
   transition: 400ms;
+  margin: 30px 0px 0px 30px;
 }
 
 .learn:hover {
   background-color: #974610;
   color: white;
 }
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+

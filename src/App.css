@@ -1,17 +1,51 @@
-.App {
-  /* text-align: center; */
-}
+
 
 
 .App-header {
   background-color: rgb(195, 190, 190);
-  /* #E5E5E5; #282c34 */
+  width: 90%;
+  margin: auto;
   /* min-height: 100vh; */
   display: flex;
-  justify-content: flex-end;
+  height: 10vh;
+  align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-right: 6rem;
-  padding-top: 2rem;
 }
 
+.logo-container {
+  flex: 3; /*takes up all the space*/
+  display: flex;
+}
+
+.logo {
+  font-weight: 400;
+  margin: 5px;
+}
+
+/* making it responsive */
+@media screen and (max-width: 1024px){
+ 
+  .presentation {
+    flex-direction: column;
+  }
+
+  .introduction {
+    margin-top: 5vh;
+    text-align: center;
+  }
+
+  .intro-text h1 {
+    font-size: 30px;
+  }
+  .intro-text p {
+    font-size: 18px;
+  }
+  .cta {
+    padding: 10px 0px 0px 0px;
+  }
+
+  .cover img {
+    height: 50%;
+  }
+}
