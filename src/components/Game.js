@@ -13,9 +13,10 @@ class Game extends Component {
       isLoading: false,
       latitude: 0,
       longitude: 0,
+      locations : []
     }
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-    this.socket = new WebSocket("ws://localhost:8080/ws")
+    this.socket = new WebSocket("ws://172.29.112.211:8080/ws")
     console.log(this.socket)
     
     this.socket.onopen = () => {
@@ -29,7 +30,30 @@ class Game extends Component {
 
     this.socket.onmessage = (msg) => {
       console.log("onmessage:")
-      console.log(msg)
+      // parses the recieved JSON data
+      // console.log(JSON.parse(msg.data))
+      // console.log(JSON.parse(msg.data)[0])
+      let json_arr = JSON.parse(msg.data)
+      // console.log(json_arr[0])
+      if (json_arr !== null || json_arr !== undefined) {
+        console.log(json_arr)
+        // let places = json_arr.map((item) => {
+        //     return item["query"]
+        //   })
+        // console.log(places)
+      }
+
+      // list of json objects in an array
+      if (msg.data[0]['query']) {
+        // console.log('is null')
+        // let locate = JSON.parse(msg.data).map((item) => {
+        //   return item.query
+        // })
+        // console.log(locate)
+        // this.setState({location : locate})
+        console.log(typeof msg.data)
+        console.log(msg.data)
+      }
     }
     
     this.socket.onerror = (error) => {
@@ -54,8 +78,8 @@ getLocation() {
 
 
 showPosition = (position) => {
-  console.log(position.coords.latitude)
-  console.log(position.coords.longitude)
+  // console.log(position.coords.latitude)
+  // console.log(position.coords.longitude)
   this.setState({ latitude: position.coords.latitude, longitude: position.coords.longitude})
   // return "Latitude: " + position.coords.latitude + 
   // "<br>Longitude: " + position.coords.longitude;
@@ -125,6 +149,7 @@ showPosition = (position) => {
       <button onClick={() => this.getLocation()}>Try It</button>
       <p>Latitude: {this.state.latitude}</p>
       <p>Longitude: {this.state.longitude}</p>
+      {this.state.locations}
     </div>
     )
   }
