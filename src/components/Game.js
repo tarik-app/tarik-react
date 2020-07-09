@@ -42,6 +42,14 @@ class Game extends Component {
         .then(function(response) {
             //handle success
             console.log(response.data);
+            let data = response.data
+            // loops through the response array and parses each into json data
+            let parsed = data.map((json) => {
+              return JSON.parse(json)
+            })
+
+            
+            console.log(parsed)
             // console.log(JSON.parse(response.data));
         })
         .catch(function(response) {
